@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 // import 'package:disenios/src/pages/graficas_circulares_page.dart';
 // import 'package:disenios/src/retos/cuadrado_animado_page.dart';
 // import 'package:disenios/src/pages/animaciones_page.dart';
-import 'package:disenios/src/pages/slideshow_page.dart';
+// import 'package:disenios/src/pages/slideshow_page.dart';
+import 'package:disenios/src/pages/pinterest_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SlideshowPage(),
+      home: PinterestPage(),
     );
   }
 }
