@@ -1,3 +1,4 @@
+import 'package:disenios/src/theme/theme.dart';
 import 'package:disenios/src/widgets/pinterest_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -38,15 +39,16 @@ class _PinterestMenuPositioner extends StatelessWidget {
   Widget build(BuildContext context) {
     final widthPantalla = MediaQuery.of(context).size.width;
     final mostrar = Provider.of<_MenuModel>(context).mostrar;
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
     return Positioned(
         bottom: 30,
         child: Container(
           width: widthPantalla,
           child: Align(
             child: PinterestMenu(
-              backgroundColor: Colors.yellowAccent,
-              activeColor: Colors.red,
-              inactiveColor: Colors.green,
+              backgroundColor: appTheme.scaffoldBackgroundColor,
+              activeColor: appTheme.accentColor,
+              inactiveColor: appTheme.unselectedWidgetColor,
               mostrar: mostrar,
               items: [
                 PinterestMenuButton(

@@ -1,4 +1,6 @@
+import 'package:disenios/src/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SliverListPage extends StatelessWidget {
   @override
@@ -18,12 +20,16 @@ class _NewListButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final appTheme = Provider.of<ThemeChanger>(context);
+
     return ButtonTheme(
       minWidth: size.width * 0.9,
       height: 100,
       child: RaisedButton(
         onPressed: () {},
-        color: Color(0xffED6762),
+        color: appTheme.darkTheme
+            ? appTheme.currentTheme.buttonColor
+            : Color(0xffED6762),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(50))),
         child: Text(
@@ -61,6 +67,8 @@ class _MainScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context);
+
     return CustomScrollView(
       slivers: <Widget>[
         // SliverAppBar(
@@ -76,7 +84,7 @@ class _MainScroll extends StatelessWidget {
                 maxheight: 200,
                 child: Container(
                     alignment: Alignment.centerLeft,
-                    color: Colors.white,
+                    color: appTheme.currentTheme.scaffoldBackgroundColor,
                     child: _Titulo()))),
         SliverList(
             delegate: SliverChildListDelegate([
@@ -119,37 +127,42 @@ class _SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 }
 
-class _ListaTareas extends StatelessWidget {
-  final items = [
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        physics: BouncingScrollPhysics(),
-        itemCount: items.length,
-        itemBuilder: (BuildContext context, int index) => items[index]);
-  }
-}
+// class _ListaTareas extends StatelessWidget {
+//   final items = [
+//     _ListItem('Orange', Color(0xffF08F66)),
+//     _ListItem('Family', Color(0xffF2A38A)),
+//     _ListItem('Subscriptions', Color(0xffF7CDD5)),
+//     _ListItem('Books', Color(0xffFCEBAF)),
+//     _ListItem('Orange', Color(0xffF08F66)),
+//     _ListItem('Family', Color(0xffF2A38A)),
+//     _ListItem('Subscriptions', Color(0xffF7CDD5)),
+//     _ListItem('Books', Color(0xffFCEBAF)),
+//   ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView.builder(
+//         physics: BouncingScrollPhysics(),
+//         itemCount: items.length,
+//         itemBuilder: (BuildContext context, int index) => items[index]);
+//   }
+// }
 
 class _Titulo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context);
     return Column(
       children: <Widget>[
         SizedBox(height: 30),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 30),
           child: Text(
-            'Nuevo',
-            style: TextStyle(color: Color(0xff532128), fontSize: 50),
+            'New',
+            style: TextStyle(
+                color: appTheme.darkTheme
+                    ? appTheme.currentTheme.textTheme.bodyText2.color
+                    : Color(0xff532128),
+                fontSize: 50),
           ),
         ),
         Stack(
@@ -157,16 +170,21 @@ class _Titulo extends StatelessWidget {
             Positioned(
               bottom: 8,
               child: Container(
-                width: double.infinity,
+                width: 150,
                 height: 8,
-                decoration: BoxDecoration(color: Color(0xffF7CDD5)),
+                decoration: BoxDecoration(
+                    color: appTheme.darkTheme
+                        ? appTheme.currentTheme.dividerColor
+                        : Color(0xffF7CDD5)),
               ),
             ),
             Container(
                 width: 140,
                 child: Text('List',
                     style: TextStyle(
-                        color: Color(0xffD93A30),
+                        color: appTheme.darkTheme
+                            ? appTheme.currentTheme.textTheme.bodyText2.color
+                            : Color(0xffD93A30),
                         fontSize: 50,
                         fontWeight: FontWeight.bold))),
           ],

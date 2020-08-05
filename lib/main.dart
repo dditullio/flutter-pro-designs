@@ -1,3 +1,4 @@
+import 'package:disenios/src/theme/theme.dart';
 import 'package:flutter/material.dart';
 // import 'package:disenios/src/labs/circular_progress_page.dart';
 // import 'package:disenios/src/pages/graficas_circulares_page.dart';
@@ -6,36 +7,25 @@ import 'package:flutter/material.dart';
 // import 'package:disenios/src/pages/slideshow_page.dart';
 // import 'package:disenios/src/pages/pinterest_page.dart';
 // import 'package:disenios/src/pages/emergency_page.dart';
-import 'package:disenios/src/pages/sliver_list_page.dart';
+// import 'package:disenios/src/pages/sliver_list_page.dart';
+import 'package:disenios/src/pages/launcher_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => new ThemeChanger(2), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<ThemeChanger>(context).currentTheme;
     return MaterialApp(
-      title: 'Diseños App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: SliverListPage(),
+      title: 'Diseños App',
+      theme: currentTheme,
+      home: LauncherPage(),
     );
   }
 }

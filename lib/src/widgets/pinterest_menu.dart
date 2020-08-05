@@ -31,29 +31,6 @@ class PinterestMenu extends StatelessWidget {
   final Color inactiveColor;
   final List<PinterestMenuButton> items;
 
-  // final List<PinterestMenuButton> items = [
-  //   PinterestMenuButton(
-  //       icon: Icons.pie_chart,
-  //       onPressed: () {
-  //         print('Icon Pie Chart');
-  //       }),
-  //   PinterestMenuButton(
-  //       icon: Icons.search,
-  //       onPressed: () {
-  //         print('Icon Search');
-  //       }),
-  //   PinterestMenuButton(
-  //       icon: Icons.notifications,
-  //       onPressed: () {
-  //         print('Icon Notification');
-  //       }),
-  //   PinterestMenuButton(
-  //       icon: Icons.supervised_user_circle,
-  //       onPressed: () {
-  //         print('Icon Supervised User Circle');
-  //       }),
-  // ];
-
   PinterestMenu(
       {this.mostrar = true,
       this.activeColor = Colors.black,
@@ -79,11 +56,6 @@ class PinterestMenu extends StatelessWidget {
               child: _PinterestMenuBackground(itemSet: _MenuItems(items)));
         },
       ),
-      // child: AnimatedOpacity(
-      //     opacity: mostrar ? 1 : 0,
-      //     duration: Duration(milliseconds: 250),
-      //     child: _PinterestMenuBackground(itemSet: _MenuItems(items))
-      //     )
     );
   }
 }
