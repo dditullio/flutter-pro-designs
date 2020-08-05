@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 // import 'package:disenios/src/pages/animaciones_page.dart';
 // import 'package:disenios/src/pages/slideshow_page.dart';
 // import 'package:disenios/src/pages/pinterest_page.dart';
-import 'package:disenios/src/pages/emergency_page.dart';
+// import 'package:disenios/src/pages/emergency_page.dart';
+import 'package:disenios/src/pages/sliver_list_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: EmergencyPage(),
+      home: SliverListPage(),
     );
   }
 }
