@@ -33,7 +33,7 @@ class ThemeChanger with ChangeNotifier {
     if (value) {
       _currentTheme = ThemeData.dark();
     } else {
-      _currentTheme = ThemeData.light();
+      _currentTheme = ThemeData.light().copyWith(accentColor: Colors.pink);
     }
 
     notifyListeners();
